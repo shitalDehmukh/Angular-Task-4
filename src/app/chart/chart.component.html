@@ -1,0 +1,30 @@
+<p>Pie-chart works!</p>
+<div class="container">
+    <div class="row">
+        <form class="form-inline" [formGroup]="chartForm">
+            <div class="form-group col-4 mt-4">
+                <label for="value1">Box 1</label>
+                <input type="number" id="value1" formControlName="value1" (blur)="calculateRemainingValue()"
+                    [(ngModel)]="value1">
+
+                <span class="text-danger"
+                    *ngIf="chartForm.get('value1')?.invalid && chartForm.get('value1')?.touched">Total value exceeds
+                    100%</span>
+            </div>
+            <div class="form-group col-4 mt-4">
+                <label for="value2">Box 1</label>
+                <input type="number" id="value2" formControlName="value2" (blur)="calculateRemainingValue()"
+                    [(ngModel)]="value2">
+                <span class="text-danger"
+                    *ngIf="chartForm.get('value2')?.invalid && chartForm.get('value2')?.touched">Total value exceeds
+                    100%</span>
+            </div>
+            <div class="col-4 form-group mt-5 w-5">
+                <button class="btn btn-primary btn btn-block btn-sm" (click)="createChart()">Create Chart</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <canvas #chartCanvas></canvas>
+    </div>
+</div>
